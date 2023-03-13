@@ -1,0 +1,58 @@
+Dicionário de dados das tabelas e triggers:
+
+Tabela "departamentos":
+
+id: identificador único do departamento (tipo: INT)
+nome: nome do departamento (tipo: VARCHAR(50))
+sigla: sigla do departamento (tipo: VARCHAR(10))
+
+Tabela "professores":
+
+id: identificador único do professor (tipo: INT)
+nome: nome do professor (tipo: VARCHAR(50))
+email: endereço de e-mail do professor (tipo: VARCHAR(50))
+departamento_id: identificador do departamento ao qual o professor está associado (tipo: INT)
+Tabela "cursos":
+
+id: identificador único do curso (tipo: INT)
+nome: nome do curso (tipo: VARCHAR(50))
+departamento_id: identificador do departamento ao qual o curso está associado (tipo: INT)
+
+Tabela "disciplinas":
+
+id: identificador único da disciplina (tipo: INT)
+nome: nome da disciplina (tipo: VARCHAR(50))
+codigo: código da disciplina (tipo: VARCHAR(50))
+creditos: número de créditos da disciplina (tipo: INT)
+curso_id: identificador do curso ao qual a disciplina pertence (tipo: INT)
+
+Tabela "alunos":
+
+id: identificador único do aluno (tipo: INT)
+nome: nome do aluno (tipo: VARCHAR(50))
+email: endereço de e-mail do aluno (tipo: VARCHAR(50))
+curso_id: identificador do curso ao qual o aluno está matriculado (tipo: INT)
+
+Tabela "matriculas":
+
+id: identificador único da matrícula (tipo: INT)
+aluno_id: identificador do aluno matriculado (tipo: INT)
+disciplina_id: identificador da disciplina na qual o aluno está matriculado (tipo: INT)
+nota: nota obtida pelo aluno na disciplina (tipo: INT)
+
+Tabela "turmas":
+
+id: identificador único da turma (tipo: INT)
+disciplina_id: identificador da disciplina associada à turma (tipo: INT)
+professor_id: identificador do professor que leciona a turma (tipo: INT)
+turno: turno da turma (tipo: VARCHAR(10))
+sala: sala de aula em que a turma é ministrada (tipo: VARCHAR(10))
+
+Trigger "impedir_remocao_disciplina":
+Impede a remoção de disciplinas que possuem matrículas associadas.
+
+Trigger "impedir_remocao_departamento":
+Impede a remoção de departamentos com cursos associados.
+
+Trigger "limitar_numero_turmas_professor":
+Limita o número de turmas atribuídas a um professor a um máximo de 5.
